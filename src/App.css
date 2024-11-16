@@ -1,38 +1,233 @@
-.App {
+/* Body Styling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  background-image: url("./PHOTO-2024-11-16-12-22-49.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* App Container */
+.app {
+  width: 90%; /* Use relative width for responsiveness */
+  max-width: 600px; /* Maximum width for desktop screens */
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
   text-align: center;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Search, Sort, and Theme Toggle */
+.search-sort-row {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+.task-search input{
+  width: 100%;
+}
+/* Theme Toggle Button */
+.theme-toggle button {
+  width: 100%;
+  height: 40px; /* Uniform height */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.theme-toggle button:hover {
+  background-color: #ccc;
+}
+/* Search Bar (Takes Full Space) */
+.task-search {
+  flex: 1; /* Occupy all available space */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Search Input and Sort Dropdown */
+.task-search input,
+.task-sort select {
+  width: 100%;
+  height: 40px; /* Uniform height */
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Task Input Section */
+.task-input {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input .row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.row input{
+  width: 100%;
+}
+.task-input input,
+.task-input select,
+.task-input button {
+  height: 40px; /* Uniform height */
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.task-input input[type="date"],
+.task-input select {
+  flex: 0 1 120px; /* Consistent size for date and dropdowns */
+}
+
+.task-input button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+.task-input button:hover {
+  background-color: #45a049;
+}
+
+/* General Button Styling */
+button {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px; /* Uniform height */
+  padding: 0 10px;
+  margin-right: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.app.light .edit-button {
+  background-color: aqua;
+  color: #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app.light .delete-button {
+  background-color: red;
+  color: #fff;
+}
+
+.app.dark .edit-button {
+  background-color: #00bcd4;
+  color: #fff;
+}
+
+.app.dark .delete-button {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f9f9f9;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Task Details Styling */
+.task-details {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  color: #f1ebeb;
+}
+
+.task-details .task-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px; /* Add spacing between title and description */
+  color: #2e2b2b; /* Optional: Customize title color */
+}
+
+.task-details .task-description {
+  font-size: 12px; /* Smaller font for the description */
+  color: #4b4646; /* Optional: Lighter color for description */
+}
+
+.check{
+  display: flex;
+  flex-direction: row;
+}
+.task-meta {
+  font-size: 12px;
+  color: #666; /* Adjust as needed */
+}
+
+.task-list li:hover {
+  transform: scale(1.02);
+}
+
+.task-list li.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-list li input[type="checkbox"] {
+  margin-right: 15px;
+  transform: scale(1.2); /* Slightly larger checkbox */
+}
+
+/* Light and Dark Themes */
+.app.light {
+  background-color: #f0f2f5;
+  color: #0d0c0c;
+}
+.app.light .task-details{
+  color: #000;
+}
+.app.dark {
+  background-color: #333;
+  color: #f0f2f5;
+}
+
+.app.dark h1,
+.app.dark .task-list li span {
+  color: #f0f2f5;
+}
+
+.app.dark .task-list li {
+  background-color: #444;
 }
